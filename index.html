@@ -1,0 +1,147 @@
+<!-- <!DOCTYPE html> -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hashlays Product</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+ 
+  <script src="hashlays.ai.@0.1.prod.min.js"></script>
+
+
+</head>
+
+<body>
+
+  <button class="HaslaysBtn" data-product-id="" data-type-id="1">Jewellery </button>
+  <button class="HaslaysBtn" data-product-id="171dc362-9321-4d59-a760-70b366ba7a97" data-type-id="2">Cosmatics Lips
+    Product</button>
+  <button class="HaslaysBtn" data-product-id="9441b2c5-b2ec-40eb-ac55-5f8614401c36" data-type-id="3">handz </button>
+  <button class="HaslaysBtn"  data-product-id=""  data-type-id="4">faceais</button>
+
+  <script>
+    // Function to handle button click
+    function handleButtonClick() {
+      const customerDetails = {
+        name: "John",
+        customerId: "123456",
+        email: "jhon@gmail.com",
+        firstName: "John",
+        lastName: "pan",
+        address: '23 Main St',
+        phonenumber: "1234567891",
+        city: "Anytown",
+        state: "California",
+        postalCode: "123423",
+        country: "USA"
+      };
+      const clickedButton = this;
+      event.preventDefault();
+
+      var product_id = event.target.getAttribute('data-product-id');
+      var product_component = event.target.getAttribute('data-component');
+      var product_TypeID = event.target.getAttribute('data-type-id');
+
+
+      const TypeId = product_TypeID;
+      const ProductId = product_id;
+      const appKey = 'fa80ff07f89da155';
+      const appId = '1';
+       const PreloadingUrl= "https://hashlays.com/assets/svg/logo.svg"
+      const AppLogoUrl="https://hashlays.com/hashlayslogo.svg"
+      const Logos={
+        PreloadLogo:PreloadingUrl,
+        AppLogo:AppLogoUrl,
+      }
+     
+
+      sendDataToHaslaysAIProduct(appId, appKey, TypeId, ProductId, 9.9252, 78.1198, customerDetails,Logos, (error, message) => {
+        if (error) {
+          console.log("Error: ", error);
+          // Handle the error case here
+        } else {
+          console.log("Success: ", message);
+          // Handle the success case here
+        }
+      });
+    }
+
+
+
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const buttons = document.querySelectorAll('.HaslaysBtn');
+      buttons.forEach(function (button) {
+        button.addEventListener('click', handleButtonClick);
+      });
+    });
+  </script>
+
+</body>
+
+</html>
+
+React ,Next, Vite, 
+<!-- 
+  const [scriptLoaded, setScriptLoaded] = useState(false);
+ useEffect(() => {
+    const script = document.createElement('script');
+    script.src = "https://cdn.jsdelivr.net/gh/hashlays/MiraxAI.cdn.link@main/Mirax.ai.%4002.prod.min.js"; 
+    script.onload = () => setScriptLoaded(true);
+    document.head.appendChild(script);
+       return () => {
+      // Clean up the script if the component is unmounted
+      document.head.removeChild(script);
+    };
+  }, []);
+
+const handleButtonClick = () => {
+    const customerDetails = {
+      name: "John",
+      customerId: "123456",
+      email: "jhon@gmail.com",
+      firstName: "John",
+      lastName: "Pan",
+      address: '23 Main St',
+      phonenumber: "1234567891",
+      city: "Anytown",
+      state: "California",
+      postalCode: "123423",
+      country: "USA"
+    };
+    const TypeId = 4;
+    const ProductId = '';
+    const appKey = 'fa80ff07f89da155';
+    const appId = '1';
+
+  if (scriptLoaded && typeof window.sendDataToHaslaysAIProduct === 'function') {
+      window.sendDataToHaslaysAIProduct(
+        appId, 
+        appKey, 
+        TypeId, 
+        ProductId, 
+        9.9252, 
+        78.1198, 
+        customerDetails, 
+        (error, message) => {
+          if (error) {
+            console.log('Error: ', error);
+          } else {
+            console.log('Success: ', message);
+          }
+        }
+      );
+    } else {
+      console.log('sendDataToHaslaysAIProduct function is not available.');
+    }
+  }; 
+  
+  
+  
+      <div>
+        <button onClick={handleButtonClick} disabled={!scriptLoaded}>
+          Send Data to Haslays Product
+        </button>
+      </div>
+  -->
